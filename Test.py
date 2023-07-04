@@ -1,11 +1,18 @@
 import numpy as np
 import imagej
 import scyjava
+import os
 
-scyjava.config.add_options('-Xmx6g')
-ij=imagej.init('/home/greebo/Desktop/Apps/Fiji.app')
-print(ij.getApp().getInfo(True))
-array = np.random.rand(5,4,3)
-dataset = ij.py.to_java(array)
+ini_dir= os.getcwd()
+
+scyjava.config.add_options('-Xmx6g') #assings 6G of memory to Java
+ij=imagej.init('/home/greebo/Desktop/Apps/Fiji.app') #Initilisation
+
+print(os.getcwd())  #Prints Current Directory
+os.chdir(ini_dir)
+
+
+dataset = ij.io().open('sample-data/test_image.tif')
+ij.py.show(dataset)
 
 print(dataset.shape)
