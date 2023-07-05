@@ -16,3 +16,4 @@ dataset = ij.io().open('sample-data/test_image.tif')
 ij.py.show(dataset)
 
 print(dataset.shape)
+
